@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Step 3 – Flash the Firmware | Pistation Project</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Pistation Project Guide</h1>
+      <p>Step 3 of 6 – Flash the Firmware</p>
+    </div>
+
+    <div class="nav">
+      <a href="2-shopping.html">← Back to Step 2</a>
+    </div>
+
+    <div class="content">
+      <h2>Install UEFI Firmware on the Pi</h2>
+      <p>This is the part where we prepare the Pi 5 to behave like a real PC: UEFI bootloader, NVMe support, proper boot selection, and a Windows-capable config.</p>
+
+      <h3>1. Download the UEFI Firmware</h3>
+      <p>Grab the official Pi UEFI build here:<br>
+      <a href="https://github.com/pftf/RPi5/releases" target="_blank">UEFI Firmware for Raspberry Pi 5 (GitHub)</a></p>
+
+      <h3>2. Prepare a microSD Card</h3>
+      <ul>
+        <li>Use a 4GB+ card (formatted FAT32)</li>
+        <li>Create a folder named <code>EFI</code> on the card</li>
+        <li>Inside <code>EFI</code>, create a folder named <code>BOOT</code></li>
+        <li>Extract the firmware zip and copy the <code>RPI_EFI.fd</code> file to <code>/EFI/BOOT/</code></li>
+        <li>Also place the <code>bootaa64.efi</code> file in the same folder</li>
+      </ul>
+
+      <h3>3. Insert and Boot</h3>
+      <ul>
+        <li>Insert the microSD into your Pi</li>
+        <li>Power it on — you should see the Raspberry Pi UEFI boot screen</li>
+        <li>Press <code>Esc</code> or <code>Del</code> to enter the setup menu</li>
+      </ul>
+
+      <h3>4. Tweak These Settings (One-Time)</h3>
+      <ul>
+        <li>Go to <strong>Device Manager > Raspberry Pi Configuration</strong></li>
+        <li>Enable <strong>NVMe support</strong> under PCIe</li>
+        <li>Set the default boot device to <strong>NVMe</strong> (or USB if you're installing from a drive)</li>
+        <li>Disable unnecessary video outputs if you’re only using one screen</li>
+        <li>Save changes and reboot</li>
+      </ul>
+
+      <div class="highlight">
+        This replaces the default Pi bootloader with UEFI. You can still revert later by removing the microSD card, but keep backups anyway.
+      </div>
+
+      <p>With UEFI ready, we’re almost in Windows territory. Next step: creating the Windows installer (with attitude).</p>
+
+      <div class="step-nav">
+        <a href="2-shopping.html">← Back: Step 2</a>
+        <a href="4-usbinstaller.html">Next → Step 4: Create the Installer</a>
+      </div>
+    </div>
+	
+	<h3>Troubleshooting</h3>
+
+<div class="highlight">
+  <strong>Problem:</strong> No video output or blank screen  
+  <br><strong>Fix:</strong> Double-check your HDMI cable and make sure the correct port is used (port 0 is closer to the USB-C). Some displays are picky—try another screen or adapter.
+
+  <hr>
+
+  <strong>Problem:</strong> Red LED flashes or stays solid with no activity  
+  <br><strong>Fix:</strong> The Pi might not be reading the microSD card. Reformat it (FAT32), make sure the folder is named <code>uefi</code> (not <code>EFI</code>), and double-check file placement. Also confirm the card isn't corrupted or write-locked.
+
+  <hr>
+
+  <strong>Problem:</strong> UEFI menu appears, but no boot devices are listed  
+  <br><strong>Fix:</strong> Go into Device Manager > Raspberry Pi Configuration and make sure PCIe support and NVMe are enabled. Also check that your HAT and SSD are properly seated and powered.
+
+  <hr>
+
+  <strong>Problem:</strong> Stuck at the boot menu or system freezes  
+  <br><strong>Fix:</strong> Bad SSD, incompatible HAT, or a Pi that's just in a mood. Try removing the SSD and booting without it, then reinsert after adjusting config. If needed, update the UEFI firmware from GitHub.
+
+  <hr>
+
+  <strong>Pro Tip:</strong> Never assume the Pi likes your accessories. Cheap USB hubs, flaky SSDs, and bargain-bin microSD cards can cause ghost problems. Always suspect hardware first.
+</div>
+
+    <div class="footer">
+      <p>&copy; 2025 Pistation Project – This is where things start to get interesting.</p>
+    </div>
+  </div>
+</body>
+</html>0		

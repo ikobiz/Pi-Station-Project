@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Step 4 – Create the Installer | Pistation Project</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Pistation Project Guide</h1>
+      <p>Step 4 of 6 – Create the Installer</p>
+    </div>
+
+    <div class="nav">
+      <a href="3-UEFI.html">← Back to Step 3</a>
+    </div>
+
+    <div class="content">
+      <h2>Build a Windows 11 Installer (ARM64)</h2>
+      <p>This step creates a proper Windows 11 installer for ARM64. You’ll be installing Windows directly to the SSD—this is a full install, not a portable or live version.</p>
+
+      <h3>1. Download the Official ISO</h3>
+      <p>Microsoft now provides official ARM64 ISOs. Go to:<br>
+        <a href="https://www.microsoft.com/en-us/software-download/windows11arm64" target="_blank">https://www.microsoft.com/en-us/software-download/windows11arm64</a>
+      </p>
+      <p>Select your edition and language, then download the ISO file.</p>
+
+      <h3>2. Write the ISO to USB</h3>
+      <ul>
+        <li>Use <a href="https://rufus.ie" target="_blank">Rufus</a> or a similar tool</li>
+        <li>Select the ISO and write it as a standard bootable image. When asked, choose remove microsoft online account requierment. Network might not work. Period.</li>
+        <li><strong>Do not</strong> use “Windows To Go” mode—this is a full install to SSD</li>
+      </ul>
+
+      <div class="highlight">
+        This USB is just your installer. You're not installing Windows to the USB—you're booting from it once, then wiping your SSD into glory.
+      </div>
+
+      <h3>3. Add NVMe Driver (if needed)</h3>
+      <ul>
+        <li>Download the Raspberry Pi NVMe driver from the WoR project:<br>
+          <a href="https://github.com/worproject/RPi-Windows-Drivers/releases" target="_blank">RPi-Windows-Drivers – GitHub Releases</a>
+        </li>
+        <li>Create a folder on the USB drive called <code>drivers</code></li>
+        <li>Place the extracted driver files (.inf, .sys, etc.) inside</li>
+      </ul>
+
+      <div class="highlight">
+        If the Windows installer doesn’t detect your SSD, click “Load Driver” during setup and point it to the <code>drivers</code> folder.
+      </div>
+
+      <div class="step-nav">
+        <a href="3-UEFI.html">← Back: Step 3</a>
+        <a href="5-boot.html">Next → Step 5: Install Windows</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2025 Pistation Project – This is not a drill. It’s a real install.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Step 5 – Install Windows | Pistation Project</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <h1>Pistation Project Guide</h1>
+      <p>Step 5 of 6 – Install Windows</p>
+    </div>
+
+    <div class="nav">
+      <a href="4-usbinstaller.html">← Back to Step 4</a>
+    </div>
+
+    <div class="content">
+      <h2>Time to Boot and Install</h2>
+      <p>You’ve built the hardware, flashed the firmware, and built your installer USB. It’s now time to turn on the Pistation and install Windows like it’s 2006—but on a Pi.</p>
+
+      <h3>1. Plug Everything In</h3>
+      <ul>
+        <li>Insert the microSD card with UEFI firmware</li>
+        <li>Plug in your keyboard, mouse, and monitor</li>
+        <li>Insert the USB stick with Windows setup</li>
+        <li>Insert your NVMe SSD into its adapter/HAT (securely!)</li>
+        <li>Last: plug in the power cable. The Pi will turn on immediately</li>
+      </ul>
+
+      <h3>2. Enter UEFI for the First Time</h3>
+      <ul>
+        <li>If you see a blue or purple UEFI screen, that’s perfect</li>
+        <li>Tap <code>Esc</code> or <code>Delete</code> quickly to enter the firmware menu</li>
+        <li>Use the arrow keys to highlight <strong>Boot Manager</strong> and hit <code>Enter</code></li>
+        <li>Select the USB drive (likely labeled “UEFI: [USB Vendor]”) and press <code>Enter</code></li>
+      </ul>
+
+      <div class="highlight">
+        If the USB doesn’t show up, make sure it was written correctly using Rufus and that it’s plugged in before powering the Pi.
+      </div>
+
+      <h3>3. Begin Windows Setup</h3>
+      <ul>
+        <li>A black screen with the Windows logo should appear. Wait patiently</li>
+        <li>Choose your language and region when prompted</li>
+        <li>Click <strong>Install Now</strong></li>
+        <li>When asked for a product key, click <strong>I don’t have a product key</strong></li>
+      </ul>
+
+      <div class="highlight">
+        This is the Bill Gates Human Edition moment—skipping the key is allowed. You can activate later.
+      </div>
+
+      <h3>4. Choose Your Edition and Disk</h3>
+      <ul>
+        <li>Pick <strong>Windows 11 Pro</strong> if possible. Then click Next</li>
+        <li>Accept the license agreement</li>
+        <li>Choose <strong>Custom: Install Windows only</strong> when asked about installation type</li>
+        <li>Select your SSD. If it's empty, click <strong>New</strong> and then Next to create partitions</li>
+        <li>If your SSD isn’t listed, click <strong>Load Driver</strong> and browse to the <code>drivers</code> folder on the USB</li>
+      </ul>
+
+      <h3>5. Let Setup Do Its Thing</h3>
+      <ul>
+        <li>Windows will start copying files to the SSD</li>
+        <li>This can take 10–30 minutes depending on drive speed</li>
+        <li>Eventually the Pi will reboot. Leave the microSD inserted for now</li>
+      </ul>
+
+      <div class="highlight">
+        If it boots back to the installer instead of the SSD, re-enter UEFI Boot Manager and manually select the NVMe drive.
+      </div>
+
+      <h3>6. Finish Setup (OOBE)</h3>
+<p>After rebooting from the installer, you’ll land in what Microsoft calls the “Out-of-Box Experience”—or OOBE for short. This is where Windows asks for preferences before letting you into the desktop. Here’s how to get through it like a pro:</p>
+
+<ul>
+  <li><strong>Region & Language:</strong> Pick your region and keyboard layout. (Usually defaults are fine)</li>
+  <li><strong>Network:</strong> DURING THE RUFUS USB BURNING, IF YOU CHOSE: REMOVE MICROSOFT ACCOUT REQUIERMENT, IT IS HIGHLY RECOMENDED OF NOT CONNECTING TO THE INTERNET, USING ETHERNET OR WIFI, DOESENT MATTER. a MICROSOFT ACCOUNT WILL SLOW YOUR POOR LITTLE PC. YOU CAN SIGN IN INTO MICROSOFT ACCOUNT LATER, AND cREATE AN ONLINE USER. THIS WILL SKIP HOURS OF UNNEEDED UPDATES THAT WILL DOWNLOAD IN THE BACKROUND WHILE WE DO TWEAKS.if you are ok with hours of updates: If you’re on Ethernet, it may proceed automatically. For Wi-Fi, choose your network and connect. wifi might not work.</li>
+  <li><strong>Product Key:</strong> If it asks again, click <strong>I don't have a product key</strong></li>
+  <li><strong>Microsoft Account(if online):</strong> You’ll be nudged to sign in or create an account. If you want to stay offline, look for a tiny “Sign-in options” or “Domain join instead” link (varies by version)</li>
+  <li><strong>User Name & Password:(if offline)</strong> Choose your name and password for logging in</li>
+  <li><strong>Privacy Settings:</strong> Turn off anything you don't want. None are required for Windows to work</li>
+  <li><strong>Wait Time:</strong> After this, it might say “This might take several minutes.” That’s true. Let it sit. Don’t reboot</li>
+</ul>
+
+<div class="highlight">
+  If anything fails or crashes here, just reboot and it’ll usually pick up where it left off. Sometimes Windows forgets it's on a Pi—be patient.
+</div>
+
+      <div class="step-nav">
+        <a href="4-usbinstaller.html">← Back: Step 4</a>
+        <a href="6-tweaks.html">Next → Step 6: Tweak It</a>
+      </div>
+
+      <h3>Troubleshooting the Install</h3>
+      <ul>
+        <li><strong>Black screen after selecting USB:</strong> Wait 2–3 minutes. Try a different USB port if it never loads</li>
+        <li><strong>No SSD detected:</strong> Click “Load Driver” and point to <code>drivers</code> on the USB</li>
+        <li><strong>Installer crashes/freezes:</strong> Reboot and try again. Rebuild your USB if needed</li>
+        <li><strong>UEFI doesn’t show USB:</strong> Use Rufus to reformat and reburn the ISO. Plug USB in before powering the Pi</li>
+      </ul>
+
+      <h3>Heads Up for First-Timers</h3>
+      <ul>
+        <li>This takes longer than it looks. Be patient</li>
+        <li>Don’t worry if you click the wrong thing—Back usually works</li>
+        <li><strong>Click “I don’t have a product key”</strong> when asked. It’s fine</li>
+        <li>Leave the UEFI microSD in until Windows is fully installed and running</li>
+        <li>If the Pi boots to the USB again, just pick your SSD from Boot Manager</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2025 Pistation Project – The Pi has seen the light. Literally. Windows logo and everything.</p>
+    </div>
+  </div>
+</body>
+</html>
